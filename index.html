@@ -5,31 +5,175 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Adriana Zacharová</title>
   <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
-    header, section { max-width: 800px; margin: auto; }
-    img { width: 200px; border-radius: 70%; }
-    h1, h2. h3, h4, h5 { color: #333; }
-    .contact a { color: #0077cc; text-decoration: none; }
+    :root {
+      --bg-start: #0b1020;
+      --bg-end: #1b2745;
+      --card-bg: #ffffff;
+      --text: #222222;
+      --muted: #4a5568;
+      --accent: #6c63ff;
+      --accent-2: #00b5d8;
+      --btn-text: #ffffff;
+      --link: #1a73e8;
+      --shadow: 0 10px 30px rgba(0,0,0,0.15);
+      --radius: 14px;
+    }
+
+    /* Background: subtle space gradient */
+    html, body {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(255,255,255,0.08), transparent),
+                  radial-gradient(800px 600px at 10% 110%, rgba(255,255,255,0.06), transparent),
+                  linear-gradient(160deg, var(--bg-start), var(--bg-end));
+      background-attachment: fixed;
+    }
+
+    /* Constrain content */
+    .page {
+      max-width: 1000px;
+      margin: 48px auto;
+      padding: 0 20px 48px;
+    }
+
+    /* Card container for content */
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    /* Header layout with photo */
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      padding: 32px;
+      border-bottom: 1px solid #eef2f7;
+    }
+    .intro {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    .avatar-wrap {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      flex: 0 0 auto;
+    }
+    .avatar {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+      border: 4px solid #fff;
+    }
+
+    h1, h2, h3, h4, h5 {
+      color: var(--text);
+      margin: 0;
+    }
+    h1 {
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    h2 {
+      font-size: 1.4rem;
+      margin-top: 8px;
+    }
+
+    /* Section styling */
+    section {
+      padding: 24px 32px;
+    }
+    section + section {
+      border-top: 1px dashed #e6ecf3;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: var(--btn-text);
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      box-shadow: 0 6px 18px rgba(108,99,255,0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.2s ease;
+      border: 0;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-1px); filter: brightness(1.03); }
+    .btn:active { transform: translateY(0); }
+    .btn.secondary {
+      background: #f3f6ff;
+      color: #1a2b6b;
+      box-shadow: none;
+      border: 1px solid #d8e0ff;
+    }
+
+    /* Links */
+    a { color: var(--link); }
+    .contact a { text-decoration: none; }
+
+    /* Tables for education/work */
+    table { border-collapse: separate; border-spacing: 0 10px; width: 100%; }
+    td { vertical-align: top; padding: 8px 12px; }
+    td:first-child { width: 140px; color: var(--muted); font-weight: 600; }
+
+    /* Header actions row */
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+
+    /* Responsive */
+    @media (max-width: 720px) {
+      header { grid-template-columns: 1fr; text-align: left; }
+      .avatar-wrap { order: -1; width: 160px; height: 160px; }
+      .avatar { width: 160px; height: 160px; }
+      .page { margin: 24px auto; padding-bottom: 24px; }
+      section { padding: 20px; }
+      header { padding: 24px; }
+    }
   </style>
 </head>
 <body>
 
-<header>
-  <img src="P1162914.jpg" align="right"/>
-  <h1>Adriana Zacharová</h1>
-  <p>Hi there! Welcome to my webpage. </p>
-  <p></p> My name is Adriana and I'm a master student at Masaryk University, enrolled in Astrophysics programme.
-     I'm working in Stellar populations research group led by Tereza Jerabkova. In my research I'm focusing on chemical evolution of high redshift galaxies.
-     Currently we are modelling nitrogen abundance of Gn-z11 using a publicly available code GalIMF available on <a href="https://github.com/Azeret/galIMF">GitHub.</a></p>
-</header>
+<div class="page">
+  <div class="card">
+    <header>
+      <div>
+        <h1>Adriana Zacharová</h1>
+        <p class="intro">Hi there! Welcome to my webpage. </p>
+        <p>My name is Adriana and I'm a master student at Masaryk University, enrolled in Astrophysics programme.
+           I'm working in Stellar populations research group led by Tereza Jerabkova. In my research I'm focusing on chemical evolution of high redshift galaxies.
+           Currently we are modelling nitrogen abundance of Gn-z11 using a publicly available code GalIMF available on <a href="https://github.com/Azeret/galIMF">GitHub.</a></p>
 
-<section>
-  <h4> You can download my CV <a href="CV.pdf" download>here.</a></h4>
-</section>
+        
+      </div>
+      <div class="avatar-wrap">
+        <img class="avatar" src="P1162914.jpg" alt="Adriana portrait" />
+      </div>
+    </header>
+
+    <section>
+      <h4> You can download my CV <a href="CV.pdf" download class="btn">here.</a></h4>
+    </section>
   
-<section>
-  <h2>Education</h2>
-  <table>
+    <section>
+      <h2>Education</h2>
+      <table>
   <tr>
     <td> since 09/2024 </td>
     <td><b>MSc</b> <br><i>Investigating Stellar Populations and the Impact of a Variable Initial Mass Function in High-Redshift Galaxies</i> Supervisor: Tereza Jerabkova
@@ -40,12 +184,12 @@
     <td> <b>BSc</b> <br><a href="https://is.muni.cz/th/rtwqa/?lang=enF"><i>Building a Reissner-Nordström black hole from scratch</i></a> Supervisor: Klaus Bering Larsen
     <br> At Department of Theoretical Physics and Astrophysics, Faculty of Science, Masaryk University</td>
   </tr>
-</table>
-</section>
+      </table>
+    </section>
   
-<section>
-  <h2>Work experience</h2>
-  <table>
+    <section>
+      <h2>Work experience</h2>
+      <table>
   <tr>
     <td> since 09/2022</td>
     <td> Science Communication, participation in event for public outreach, organising and designing science education activities
@@ -57,14 +201,17 @@
     <br> shooting, 
     <br> At Department of Theoretical Physics and Astrophysics, Faculty of Science, Masaryk University</td>
   </tr>
-</table>
-</section>
+      </table>
+    </section>
 
-<section class="contact">
-  <h2>Contact</h2>
-  <p>Email: <a href="mailto:zacharova@physics.muni.cz">zacharova@physics.muni.cz</a></p>
-  <p>GitHub: <a href="https://github.com/bshidvb">github.com/bshidvb</a></p>
-</section>
+    <section class="contact">
+      <h2>Contact</h2>
+      <p>Email: <a class="btn secondary" href="mailto:zacharova@physics.muni.cz">zacharova@physics.muni.cz</a></p>
+      <p>GitHub: <a class="btn secondary" href="https://github.com/bshidvb">github.com/bshidvb</a></p>
+    </section>
+
+  </div>
+</div>
 
 </body>
 </html>
