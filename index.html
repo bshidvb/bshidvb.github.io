@@ -108,6 +108,25 @@
       border-top: 1px dashed #e6ecf3;
     }
 
+    /* Full-width photo at the bottom */
+    .photo-section {
+      padding: 0;
+    }
+    .full-photo {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .photo-caption {
+      margin: 0;
+      padding: 12px 32px 24px;
+      color: var(--muted);
+      font-style: italic;
+      font-size: 0.95rem;
+      background: var(--card-bg);
+      text-align: left;
+    }
+
     /* Buttons */
     .btn {
       display: inline-flex;
@@ -224,6 +243,13 @@
       <h2>Contact</h2>
       <p>Email: <a class="btn secondary" href="mailto:zacharova@physics.muni.cz">zacharova@physics.muni.cz</a></p>
       <p>GitHub: <a class="btn secondary" href="https://github.com/bshidvb">github.com/bshidvb</a></p>
+    </section>
+
+    <section class="photo-section">
+      <figure class="full-width-figure">
+        <img class="full-photo" src="P1491212.jpg" alt="Photograph P1491212" />
+        <figcaption class="photo-caption">P1491212.jpg</figcaption>
+      </figure>
     </section>
 
   </div>
